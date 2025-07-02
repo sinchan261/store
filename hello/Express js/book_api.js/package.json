@@ -1,0 +1,22 @@
+{
+  "name": "book_api",
+  "version": "1.0.0",
+  "description": "simple api for a book without db",
+  "main": "server.js",
+  "scripts": {
+    
+    "start": "node server.js",
+    "server":"nodemon server.js"
+  },
+  "keywords": [
+    "express",
+    "Mern",
+    "stack"
+  ],
+  "author": "saikat",
+  "license": "ISC",
+  "devDependencies": {
+    "express": "^4.19.2",
+    "nodemon": "^3.1.4"
+  }
+}

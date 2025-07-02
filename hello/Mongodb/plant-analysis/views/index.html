@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdnjs.cloudfare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
+</head>
+<body>
+    <div class="container">
+        <h1>
+            <i class="fas fa-leaf"></i> plantscan:Advanced plant Analysis Tool</h1>
+            <p class="description">
+                upload an image of a plant to receive a detailed analysis of its specis ,health and care recommendation
+
+            </p>
+            <h2>How to use</h2>
+            <div class="cards">
+                <div class="card">
+                    <i class="fas fa-upload card-icon"></i>
+                    <h3>upload</h3>
+                    <p>select or drag&drop a plant image</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-search card-icon"></i>
+                    <h3>Analyze</h3>
+                    <p>Click 'Analyze plant' to process the image</p>
+                </div>
+            </div>
+        </h1>
+
+    </div>
+  <form id="uploadForm" enctype="multipart/form-data">
+    <div class="upload-area" id="dropArea">
+        <i class="fas fa-cloud-upload-alt upload-icon"></i>
+        <p class="upload-text"></p>
+        <input type="file" name="image" accept="image/*" required id="imageInput"/>
+        <img id="imagePreview" alt="Image Preview"/>
+    </div>
+    <button type="submit">
+        <i class="fas fa-search"></i>Analyze plant
+    </button>
+  </form>
+</form>
+
+</body>
+</html>

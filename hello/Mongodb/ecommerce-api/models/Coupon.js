@@ -1,0 +1,1 @@
+// Coupon schema and model

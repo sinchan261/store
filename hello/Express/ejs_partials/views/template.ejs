@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>welcome  <%= username%></h1>
+   
+    <% if(is_premmium){%>
+        <p style="color:rgb(89, 255, 0)">you are login page</p>
+        <p>your email is <%= emails %></p>
+        <h3><%= username%> your id is <%= id%> </h3>
+
+    <% }else{%>
+        <p style="color:red">sorry bose you are not login</p>
+    <%}%>
+    <%= (is_premmium)? "😊😊😊welcome our website":"sorry!🥲🥲🥲 something is wrong"%>
+</body>
+</html>

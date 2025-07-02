@@ -1,0 +1,20 @@
+{
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "name": "node_js1",
+  "version": "1.0.0",
+  "description": "my first express application",
+  "main": "server.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "serverjs",
+    "nodejs",
+    "web"
+  ],
+  "author": "saikat sinchan",
+  "license": "ISC"
+}

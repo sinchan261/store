@@ -1,0 +1,31 @@
+<%- include('partials/header', { title, user: user }) %>
+<div class="container mt-4">
+    <h1 class="mb-4 text-center"> All Posts[<%=posts.length%></h1>
+    <% if (posts && posts.length > 0) { %>
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+            <% posts.forEach(element => { %>
+                <div class="col">
+                    <div class="card h-100 shadow-sm">
+                        <% if (element?.images?.length > 0) { %>
+                            <img src="<%- element.images[0].url %>" class="card-img-top img-fluid" style="max-height: 200px; object-fit: cover;" alt="post image">
+                        <% } %>
+                        <div class="card-body">
+                            <h5 class="card-title text-primary"><%- element.title %></h5>
+                            <p class="card-text text-muted"><%- element.content %></p>
+                        </div>
+                        <div class="card-footer bg-white border-0">
+                            <small class="text-muted">
+                                By <strong><%= element.author.username %></strong> on <%= element.createdAt.toDateString() %>
+                            </small>
+                            <a href="/posts/<%= element._id %>" class="btn btn-primary float-end">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+    <% } else { %>
+        <p class="text-center text-muted">No posts available.</p>
+    <% } %>
+</div>
+<%- include('partials/footer') %>
+

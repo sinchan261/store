@@ -1,0 +1,245 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "car inventory api",
+        "contact": {},
+        "version": "1.0"
+    },
+    "host": "localhost 5173",
+    "basePath": "/",
+    "paths": {
+        "/delete/{id}": {
+            "delete": {
+                "description": "Delete particular user from database",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Delete user",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "User ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "User deleted successfully",
+                        "schema": {
+                            "$ref": "#/definitions/main.MessageResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid user ID",
+                        "schema": {
+                            "$ref": "#/definitions/main.MessageResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "No user found to delete",
+                        "schema": {
+                            "$ref": "#/definitions/main.MessageResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Error deleting user or checking result",
+                        "schema": {
+                            "$ref": "#/definitions/main.MessageResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/getOne/{id}": {
+            "get": {
+                "description": "Retrieve one user from the database using ID",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Get user by ID",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.User"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid user ID",
+                        "schema": {
+                            "$ref": "#/definitions/main.MessageResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Query error",
+                        "schema": {
+                            "$ref": "#/definitions/main.MessageResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/getdata": {
+            "get": {
+                "description": "Retrieve all users from the database",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Get all data",
+                "responses": {
+                    "200": {
+                        "description": "Multiple users",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.User"
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "schema": {
+                            "$ref": "#/definitions/main.MessageResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/insert": {
+            "post": {
+                "description": "Insert a user into users table",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Create a new user",
+                "parameters": [
+                    {
+                        "description": "User Object",
+                        "name": "user",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.User"
+                        }
+                    }
+                ],
+                "responses": {
+                    "202": {
+                        "description": "Successfully created user",
+                        "schema": {
+                            "$ref": "#/definitions/main.MessageResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Insertion failed due to credentials issue",
+                        "schema": {
+                            "$ref": "#/definitions/main.MessageResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/update": {
+            "put": {
+                "description": "Update a user's name using ID",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Update user's name",
+                "parameters": [
+                    {
+                        "description": "Update request",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/main.UpdateRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "202": {
+                        "description": "No user found for update",
+                        "schema": {
+                            "$ref": "#/definitions/main.MessageResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid user ID or update failed",
+                        "schema": {
+                            "$ref": "#/definitions/main.MessageResponse"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "main.MessageResponse": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "type": "string",
+                    "example": "successfully created"
+                }
+            }
+        },
+        "main.UpdateRequest": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "name": {
+                    "type": "string",
+                    "example": "saikat sinchan ghosh"
+                }
+            }
+        },
+        "models.User": {
+            "type": "object",
+            "properties": {
+                "age": {
+                    "type": "integer",
+                    "example": 25
+                },
+                "email": {
+                    "type": "string",
+                    "example": "saikat@example.com"
+                },
+                "id": {
+                    "type": "integer",
+                    "example": 1
+                },
+                "name": {
+                    "type": "string",
+                    "example": "Saikat"
+                }
+            }
+        }
+    }
+}

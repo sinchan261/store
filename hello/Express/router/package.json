@@ -1,0 +1,17 @@
+{
+  "name": "router",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "server":"nodemon run server"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  }
+}

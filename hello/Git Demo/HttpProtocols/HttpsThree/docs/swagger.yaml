@@ -1,0 +1,162 @@
+basePath: /
+definitions:
+  main.MessageResponse:
+    properties:
+      message:
+        example: successfully created
+        type: string
+    type: object
+  main.UpdateRequest:
+    properties:
+      id:
+        example: "1"
+        type: string
+      name:
+        example: saikat sinchan ghosh
+        type: string
+    type: object
+  models.User:
+    properties:
+      age:
+        example: 25
+        type: integer
+      email:
+        example: saikat@example.com
+        type: string
+      id:
+        example: 1
+        type: integer
+      name:
+        example: Saikat
+        type: string
+    type: object
+host: localhost 5173
+info:
+  contact: {}
+  title: car inventory api
+  version: "1.0"
+paths:
+  /delete/{id}:
+    delete:
+      description: Delete particular user from database
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: User deleted successfully
+          schema:
+            $ref: '#/definitions/main.MessageResponse'
+        "400":
+          description: Invalid user ID
+          schema:
+            $ref: '#/definitions/main.MessageResponse'
+        "404":
+          description: No user found to delete
+          schema:
+            $ref: '#/definitions/main.MessageResponse'
+        "500":
+          description: Error deleting user or checking result
+          schema:
+            $ref: '#/definitions/main.MessageResponse'
+      summary: Delete user
+      tags:
+      - Users
+  /getOne/{id}:
+    get:
+      description: Retrieve one user from the database using ID
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.User'
+        "400":
+          description: Invalid user ID
+          schema:
+            $ref: '#/definitions/main.MessageResponse'
+        "500":
+          description: Query error
+          schema:
+            $ref: '#/definitions/main.MessageResponse'
+      summary: Get user by ID
+      tags:
+      - Users
+  /getdata:
+    get:
+      description: Retrieve all users from the database
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Multiple users
+          schema:
+            items:
+              $ref: '#/definitions/models.User'
+            type: array
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/main.MessageResponse'
+      summary: Get all data
+      tags:
+      - Users
+  /insert:
+    post:
+      consumes:
+      - application/json
+      description: Insert a user into users table
+      parameters:
+      - description: User Object
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/models.User'
+      produces:
+      - application/json
+      responses:
+        "202":
+          description: Successfully created user
+          schema:
+            $ref: '#/definitions/main.MessageResponse'
+        "400":
+          description: Insertion failed due to credentials issue
+          schema:
+            $ref: '#/definitions/main.MessageResponse'
+      summary: Create a new user
+      tags:
+      - Users
+  /update:
+    put:
+      consumes:
+      - application/json
+      description: Update a user's name using ID
+      parameters:
+      - description: Update request
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/main.UpdateRequest'
+      produces:
+      - application/json
+      responses:
+        "202":
+          description: No user found for update
+          schema:
+            $ref: '#/definitions/main.MessageResponse'
+        "400":
+          description: Invalid user ID or update failed
+          schema:
+            $ref: '#/definitions/main.MessageResponse'
+      summary: Update user's name
+      tags:
+      - Users
+swagger: "2.0"

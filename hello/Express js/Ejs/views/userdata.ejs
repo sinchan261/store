@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USer Data</title>
+</head>
+<body>
+    <h1>Passing Data From server to client</h1>
+    <h1>welcome,<%=username%></h1>
+    <p>Email:<%=emails%></p>
+    <%console.log('this is from Ejs')%>
+   <%if(ispremium){%>
+    <p>You are a premium member</p>
+   <%} else{%>
+    You are not a premium member
+   <%}%> 
+   
+<p><%=(islogin)?"welcome you are log in":"please log in"%></p>
+</body>
+</html>

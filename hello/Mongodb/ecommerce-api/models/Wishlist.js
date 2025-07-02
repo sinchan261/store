@@ -1,0 +1,1 @@
+// Wishlist schema and model
